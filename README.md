@@ -2,6 +2,8 @@
 
 This is a Flask-based web application that uses the **BLIP (Bootstrapping Language-Image Pretraining)** model to generate captions and detailed descriptions for uploaded images. The app provides a simple API to upload an image and get both a caption and a detailed description of the image.
 
+![Image Captioning And Description](Result.png)
+
 ## Features
 
 - Upload an image to generate a caption and detailed description.
@@ -46,8 +48,8 @@ pip install -r requirements.txt
 Clone this repository to your local machine:
 
 ```bash
-git clone <repository_url>
-cd <repository_name>
+git clone https://github.com/Ganesh2409/ImageCaptioningAndDescription.git
+cd ImageCaptioningAndDescription
 ```
 
 ### Step 2: Install the Dependencies
