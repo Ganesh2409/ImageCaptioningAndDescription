@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Captioning</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        .hidden {
+            display: none;
+        }
+        input[type="file"] {
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 30px;
+            text-align: left;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Upload an Image</h1>
+    <form id="upload-form" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+
+    <div id="result" class="hidden">
+        <h2>Generated Caption:</h2>
+        <p id="caption"></p>
+        <h3>Detailed Description:</h3>
+        <p id="detailed-description"></p>
+        <h3>Uploaded Image:</h3>
+        <img id="uploaded-image" src="" alt="Uploaded Image">
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('upload-form');
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(form);
+        const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.caption && data.detailed_description && data.image_url) {
+            // Display the caption and description
+            document.getElementById('caption').textContent = data.caption;
+            document.getElementById('detailed-description').textContent = data.detailed_description;
+
+            // Display the uploaded image
+            const uploadedImage = document.getElementById('uploaded-image');
+            uploadedImage.src = data.image_url;
+
+            // Show the result section
+            document.getElementById('result').classList.remove('hidden');
+        } else {
+            alert('Error: ' + data.error);
+        }
+    });
+</script>
+
+</body>
+</html>

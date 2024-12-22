@@ -1,0 +1,59 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#caption {
+    font-size: 18px;
+    color: #333;
+}
+
+#image-frame {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px;
+    border: 5px solid #ddd;  /* Create the border around the image */
+    border-radius: 10px;      /* Optional: rounded corners */
+    background-color: white;  /* Optional: background color for the frame */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: shadow for the frame */
+}
+
+#uploaded_image {
+    max-width: 600px;  /* Set a maximum width for the image */
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
