@@ -1,5 +1,3 @@
-
-```markdown
 # Image Captioning and Description
 
 This is a Flask-based web application that uses the **BLIP (Bootstrapping Language-Image Pretraining)** model to generate captions and detailed descriptions for uploaded images. The app provides a simple API to upload an image and get both a caption and a detailed description of the image.
